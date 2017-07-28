@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="head">
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title th:text="${title}">My Best Friend</title>
-</head>
+
     <link rel="stylesheet" th:href="@{/css/style.css}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap//css/bootstrap.min.css" />
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+</head>
 <body>
-<    th:fragment="navigation">
+<div th:fragment="navigation">
 
     <div th:if="${userId}">
         <nav class="user-nav">

@@ -1,0 +1,10 @@
+body{
+    font-family: actor;
+}
+nav{
+    margin-bottom: 30px;
+}
+
+.user-nav {
+    float:right;
+}
