@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value="user")
+@RequestMapping
 public class UserController extends AbstractController{
 
 
@@ -45,7 +45,7 @@ public class UserController extends AbstractController{
         userDao.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "redirect:/user";
+        return "redirect:/";
     }
     @RequestMapping(value = "/login", method=RequestMethod.GET)
     public String login(Model model){
@@ -66,7 +66,7 @@ public class UserController extends AbstractController{
             return "login";
         }
         setUserInSession(request.getSession(), theUser);
-        return "/user/index";
+        return "redirect:/";
     }
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request){
@@ -77,8 +77,12 @@ public class UserController extends AbstractController{
 
 
     @RequestMapping(value="")
-    public String index(Model model){
+    public String index(Model model, HttpServletRequest request){
+        User user = getUserFromSession(request.getSession());
+
+
         model.addAttribute("title", "My Pets");
+        model.addAttribute("pets", petDao.findByOwner(user));
         return "/user/index";
 
     }
