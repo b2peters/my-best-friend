@@ -2,6 +2,7 @@ package org.launchcode.mybestfriend.models;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
@@ -18,8 +19,9 @@ public class User extends AbstractEntity {
     private String pwHash;
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    //@JoinColumn(name = "pet_uid")
-    //private List<Pet> pets;
+    @OneToMany
+    @JoinColumn(name = "pet_uid")
+    private List<Pet> pets;
 
     public User () {}
 

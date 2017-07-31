@@ -1,6 +1,7 @@
 package org.launchcode.mybestfriend.controllers;
 
 import org.launchcode.mybestfriend.models.User;
+import org.launchcode.mybestfriend.models.data.PetDao;
 import org.launchcode.mybestfriend.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,9 @@ public abstract class AbstractController {
 
     @Autowired
     protected UserDao userDao;
+
+    @Autowired
+    protected PetDao petDao;
 
 
     public static final String userSessionKey = "user_id";

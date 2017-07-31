@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:unless="${pets} and ${pets.size()}">No Pets Yet</p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Pet</th>
+    </tr>
+    <tr th:each="pet : ${pets}">
+        <td th:text="${pet.name}"></td>
+        <td th:text="${pet.petType}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
