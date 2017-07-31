@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value="user")
+@RequestMapping
 public class UserController extends AbstractController{
 
 
@@ -45,7 +45,7 @@ public class UserController extends AbstractController{
         userDao.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "redirect:/user";
+        return "redirect:/";
     }
     @RequestMapping(value = "/login", method=RequestMethod.GET)
     public String login(Model model){

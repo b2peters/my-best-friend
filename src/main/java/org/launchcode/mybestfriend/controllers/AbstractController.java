@@ -18,6 +18,8 @@ public abstract class AbstractController {
     protected PetDao petDao;
 
 
+
+
     public static final String userSessionKey = "user_id";
 
     protected User getUserFromSession(HttpSession session){

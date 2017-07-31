@@ -45,7 +45,6 @@ public class PetController extends AbstractController {
         newPet.setOwner(owner);
 
         petDao.save(newPet);
-
-        return "pet/index";
+        return "index";
     }
 }

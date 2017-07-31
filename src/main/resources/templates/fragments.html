@@ -11,14 +11,16 @@
 <body>
 <div th:fragment="navigation">
 
-    <div th:if="${userId}">
-        <nav class="user-nav">
-            <a href="/user/logout">Log Out</a>
-        </nav>
+    <nav th:if="${userId}">
+        <div class="nav nav-pills" style="text-align:right" >
+            <a href="/">My Pets</a>
+            <a href="/pet/add">Add a Pet</a>
+            <a href="/logout" >Log Out</a>
+        </div>
+    </nav>
 
-        <nav>
-            <a href="/">Home</a>
-        </nav>
+    <div class="nav nav-pills nav-stacked" >
+        <a href="/">Home</a>
     </div>
 
 </div>
