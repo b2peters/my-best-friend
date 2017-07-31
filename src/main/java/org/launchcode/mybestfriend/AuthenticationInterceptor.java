@@ -19,8 +19,8 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
     UserDao userDao;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)throws IOException {
-        List<String> nonAuthPages = Arrays.asList("/login", "/Sign-up");
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
+        List<String> nonAuthPages = Arrays.asList( "/login", "/Sign-up");
 
         if (!nonAuthPages.contains(request.getRequestURI())) {
 
@@ -36,7 +36,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
             }
 
             if (!isLoggedIn) {
-                response.sendRedirect("/user/login");
+                response.sendRedirect("/login");
                 return false;
             }
         }

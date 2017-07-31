@@ -23,6 +23,8 @@ public abstract class AbstractController {
     protected JournalDao journalDao;
 
 
+
+
     public static final String userSessionKey = "user_id";
 
     protected User getUserFromSession(HttpSession session){
