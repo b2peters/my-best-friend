@@ -54,16 +54,28 @@ public class UserController extends AbstractController{
         return"user/login";
     }
     @RequestMapping(value="/login", method=RequestMethod.POST)
-    public String login(@ModelAttribute @Valid LogInForm form, Errors errors, HttpServletRequest request){
+    public String login(Model model, @ModelAttribute @Valid LogInForm form, Errors errors, HttpServletRequest request){
         if (errors.hasErrors()){
-    return "login";
+            model.addAttribute("title", "First error if");
+            return "user/login";
         }
-    User theUser = userDao.findByUsername(form.getUsername());
+
+
+        if(userDao.findByUsername(form.getUsername()) == null){
+            model.addAttribute("title", "name error if");
+
+            errors.rejectValue("username", "unknown.user", "Unknown user");
+            return "user/login";
+        }
+
+        User theUser = userDao.findByUsername(form.getUsername());
         String password = form.getPassword();
 
         if(!theUser.isMatchingPassword(password)){
+            model.addAttribute("title", "password error if");
+
             errors.rejectValue("password", "password.invalid", "Invalid password");
-            return "login";
+            return "user/login";
         }
         setUserInSession(request.getSession(), theUser);
         return "redirect:/";

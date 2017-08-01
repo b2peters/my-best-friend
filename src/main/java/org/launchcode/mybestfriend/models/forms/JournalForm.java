@@ -1,12 +1,10 @@
-package org.launchcode.mybestfriend.models;
+package org.launchcode.mybestfriend.models.forms;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import org.launchcode.mybestfriend.models.Pet;
+
 import javax.validation.constraints.NotNull;
 
-@Entity
-public class Journal extends AbstractEntity{
+public class JournalForm {
 
     @NotNull
     private String title;
@@ -14,12 +12,10 @@ public class Journal extends AbstractEntity{
     @NotNull
     private String entry;
 
-    @ManyToOne
-    @JoinColumn(name="pet_uid")
+    @NotNull
     private Pet pet;
 
-//    Add attribute for img/vid
-
+    public JournalForm(){}
 
     public String getTitle() {
         return title;
@@ -36,4 +32,10 @@ public class Journal extends AbstractEntity{
     public void setEntry(String entry) {
         this.entry = entry;
     }
+
+    public Pet getPet() {
+        return pet;
+    }
+
+
 }

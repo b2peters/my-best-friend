@@ -5,21 +5,21 @@
     <title th:text="${title}">My Best Friend</title>
 
     <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap//css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body >
 <div th:fragment="navigation">
 
     <nav th:if="${userId}">
-        <div class="nav nav-pills" style="text-align:right" >
+        <div class="button" style="text-align:right" >
             <a href="/">My Pets</a>
             <a href="/pet/add">Add a Pet</a>
             <a href="/logout" >Log Out</a>
         </div>
     </nav>
 
-    <div class="nav nav-pills nav-stacked" >
+    <div class="button" >
         <a href="/">Home</a>
     </div>
 

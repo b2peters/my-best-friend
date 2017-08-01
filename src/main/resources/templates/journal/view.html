@@ -5,17 +5,13 @@
 <h1 th:text="${title}">Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
 
-<p th:unless="${pets} and ${pets.size()}">No Pets Yet</p>
-
 <table class="table">
-    <tr>
-        <th>Name</th>
-        <th>Pet</th>
+
+    <tr th:each="journal : ${journals}">
+        <td th:text="${journal.title}"></td>
+        <td th:text="${journal.entry"></td>
     </tr>
-    <tr th:each="pet : ${pets}">
-        <td th:text="${pet.petName}"></td>
-        <td th:text="${pet.petType}"></td>
-    </tr>
+
 </table>
 
 </body>

@@ -20,7 +20,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
-        List<String> nonAuthPages = Arrays.asList( "/login", "/Sign-up");
+        List<String> nonAuthPages = Arrays.asList("/login", "/sign-up");
 
         if (!nonAuthPages.contains(request.getRequestURI())) {
 

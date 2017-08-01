@@ -6,7 +6,7 @@ import javax.validation.constraints.Pattern;
 public class LogInForm {
 
     @NotNull
-    @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9_-]{8,15}", message = "Usernames must be between 8-15 characters, consisting of only numbers, letters, and the _ or - characters")
+    @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9_-]{8,15}", message = "Usernames must be between 8-15 characters")
     private String username;
 
     @NotNull
