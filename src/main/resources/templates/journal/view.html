@@ -12,12 +12,13 @@
     <tr th:each="journal : ${journals}">
         <td th:text="${journal.title}" ></td>
         <td th:text="${journal.entry}"></td>
+
     </tr>
 
 </table>
-<div type="hidden" th:field="${pet_uid}"
+<div type="hidden" th:field="${pet_uid}"></div>
 <div class="container">
-    <a href="/journal/add" class="btn btn-default" >Add an Entry</a>
+    <a th:href="'/journal/add/'+${pet_uid}" class="btn btn-default" >Add an Entry</a>
 </div>
 </body>
 </html>

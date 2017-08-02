@@ -26,7 +26,7 @@ public class JournalController extends AbstractController{
     }
 
     @RequestMapping(value="/add/{pet_uid}", method= RequestMethod.GET)
-    public String DisplayAddJournal(Model model, @RequestParam int pet_uid, HttpServletRequest request){
+    public String DisplayAddJournal(Model model, @PathVariable int pet_uid){
 
         model.addAttribute("title", "Add A New Pet");
         model.addAttribute("pet_uid", pet_uid);
@@ -34,16 +34,17 @@ public class JournalController extends AbstractController{
         return ("journal/add");
     }
 
-    @RequestMapping(value="/add", method=RequestMethod.POST)
-    public String processAddJournal(@ModelAttribute @Valid Journal newJournal, Errors errors, Model model){
+    @RequestMapping(value="/add/{pet_uid}", method=RequestMethod.POST)
+    public String processAddJournal(@ModelAttribute @Valid Journal newJournal, Errors errors, Model model, @PathVariable int pet_uid){
         if (errors.hasErrors()){
-            model.addAttribute("title", "Add A New Pet");
-            return "journal/add";
+            return "/journal/add";
         }
-
+        Pet pet = petDao.findOne(pet_uid);
+        newJournal.setOwner(pet);
         journalDao.save(newJournal);
 
-        return "/pet/view";
+        model.addAttribute("pet", pet);
+        return "redirect:/journal/"+pet_uid;
 
     }
 }
