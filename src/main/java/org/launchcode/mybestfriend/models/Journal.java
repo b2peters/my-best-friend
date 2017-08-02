@@ -16,7 +16,7 @@ public class Journal extends AbstractEntity{
 
     @ManyToOne
     @JoinColumn(name="pet_uid")
-    private Pet petOwner;
+    private Pet owner;
 
 //    Add attribute for img/vid
 
@@ -37,11 +37,11 @@ public class Journal extends AbstractEntity{
         this.entry = entry;
     }
 
-    public Pet getPetOwner() {
-        return petOwner;
+    public Pet getOwner() {
+        return owner;
     }
 
-    public void setPetOwner(Pet petOwner) {
-        this.petOwner = petOwner;
+    public void setOwner(Pet owner) {
+        this.owner = owner;
     }
 }

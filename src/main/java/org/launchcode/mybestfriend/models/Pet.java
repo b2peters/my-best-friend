@@ -24,7 +24,7 @@ public class Pet extends AbstractEntity{
     @Size(min=1, message="Please indicate the type of pet")
     private String petType;
 
-    @OneToMany(mappedBy="pet")
+    @OneToMany(mappedBy="owner")
     private List<Journal> journals;
 
     public String getPetName() {
@@ -49,5 +49,9 @@ public class Pet extends AbstractEntity{
 
     public void setPetType(String petType) {
         this.petType = petType;
+    }
+
+    public List<Journal> getJournals() {
+        return journals;
     }
 }

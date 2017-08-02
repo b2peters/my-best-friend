@@ -11,32 +11,35 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
-@Controller(value="journal")
+@Controller
+@RequestMapping(value="journal")
 public class JournalController extends AbstractController{
 
     @RequestMapping(value="/{pet_uid}")
     public String viewJournal(Model model, @PathVariable int pet_uid){
         Pet pet = petDao.findOne(pet_uid);
-        model.addAttribute("pet", pet);
+        List<Journal> journals = pet.getJournals();
+        model.addAttribute("journals", journals);
         return "journal/view";
     }
 
     @RequestMapping(value="/add/{pet_uid}", method= RequestMethod.GET)
-    public String DisplayAddJournal(Model model){
+    public String DisplayAddJournal(Model model, @RequestParam int pet_uid, HttpServletRequest request){
+
         model.addAttribute("title", "Add A New Pet");
+        model.addAttribute("pet_uid", pet_uid);
         model.addAttribute(new Journal());
         return ("journal/add");
     }
 
     @RequestMapping(value="/add", method=RequestMethod.POST)
-    public String processAddJournal(@ModelAttribute @Valid Journal newJournal, Errors errors, @RequestParam int pet_uid, Model model, HttpServletRequest request){
+    public String processAddJournal(@ModelAttribute @Valid Journal newJournal, Errors errors, Model model){
         if (errors.hasErrors()){
             model.addAttribute("title", "Add A New Pet");
             return "journal/add";
         }
-        Pet petOwner = petDao.findOne(pet_uid);
-        newJournal.setPetOwner(petOwner);
 
         journalDao.save(newJournal);
 

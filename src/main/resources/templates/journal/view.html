@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <h1 th:text="${title}">Default Title</h1>
 <nav th:replace="fragments :: navigation"></nav>
 
+<p th:unless="${journals} and ${journals.size()}">No Entries</p>
+
 <table class="table">
 
     <tr th:each="journal : ${journals}">
-        <td th:text="${journal.title}"></td>
-        <td th:text="${journal.entry"></td>
+        <td th:text="${journal.title}" ></td>
+        <td th:text="${journal.entry}"></td>
     </tr>
 
 </table>
-
+<div type="hidden" th:field="${pet_uid}"
+<div class="container">
+    <a href="/journal/add" class="btn btn-default" >Add an Entry</a>
+</div>
 </body>
 </html>
