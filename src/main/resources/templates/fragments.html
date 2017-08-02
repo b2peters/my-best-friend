@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title th:text="${title}">My Best Friend</title>
 
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -12,11 +12,11 @@
 <div th:fragment="navigation">
 
     <nav th:if="${userId}">
-        <div class="button" style="text-align:right" >
-            <a href="/">My Pets</a>
-            <a href="/pet/add">Add a Pet</a>
-            <a href="/logout" >Log Out</a>
-        </div>
+        <ul class="nav nav-pills pull-right" style="text-align:right" >
+            <li><a href="/">My Pets</a></li>
+            <li><a href="/pet/add">Add a Pet</a></li>
+            <li><a href="/logout" >Log Out</a></li>
+        </ul>
     </nav>
 
     <div class="button" >
