@@ -10,15 +10,19 @@
 <table class="table">
 
     <tr th:each="journal : ${journals}">
+        <td><a th:href="'/journal/upload/'+${journal.uid}">Add Photo</a></td>
         <td th:text="${journal.title}" ></td>
         <td th:text="${journal.entry}"></td>
+
 
     </tr>
 
 </table>
+
+<a href="/journal/addPhoto" value="Add Photo"/>
 <div type="hidden" th:field="${pet_uid}"></div>
 <div class="container">
-    <a th:href="'/journal/add/'+${pet_uid}" class="btn btn-default" >Add an Entry</a>
+    <a th:href="'/journal/add/'+${pet_uid}" class="btn btn-default pull-right" >Add an Entry</a>
 </div>
 </body>
 </html>

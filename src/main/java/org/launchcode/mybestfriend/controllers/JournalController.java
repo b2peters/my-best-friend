@@ -47,4 +47,10 @@ public class JournalController extends AbstractController{
         return "redirect:/journal/"+pet_uid;
 
     }
+    @RequestMapping(value="/upload/{journal_uid}", method = RequestMethod.GET)
+    public String displayUploadPicForm(Model model, @PathVariable int journal_uid){
+        Journal journal = journalDao.findOne(journal_uid);
+        model.addAttribute("journal", journal);
+        return "/journal/upload";
+    }
 }
