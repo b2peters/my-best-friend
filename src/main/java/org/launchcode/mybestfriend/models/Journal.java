@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import java.io.File;
+import java.sql.Blob;
 
 @Entity
 public class Journal extends AbstractEntity{
@@ -18,8 +20,16 @@ public class Journal extends AbstractEntity{
     @JoinColumn(name="pet_uid")
     private Pet owner;
 
-//    Add attribute for img/vid
 
+    private Blob picture;
+
+    public Blob getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Blob picture) {
+        this.picture = picture;
+    }
 
     public String getTitle() {
         return title;

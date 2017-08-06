@@ -7,6 +7,10 @@
 
 <p th:unless="${journals} and ${journals.size()}">No Entries</p>
 
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+
 <table class="table">
 
     <tr th:each="journal : ${journals}">
