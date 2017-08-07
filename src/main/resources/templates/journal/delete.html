@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:unless="${journals} and ${journals.size()}">Nothing to Delete</p>
+
+<form method="post" action="/journal/delete">
+    <div th:each="journal : ${journals}" class="checkbox">
+        <input type="checkbox" name="ids" th:value="${journal.uid}" th:id="${journal.uid}"/>
+        <label th:for="${journal.uid}" th:text="${journal.title}"></label>
+    </div>
+
+    <input  type="submit" value="Delete Entry" />
+</form>
+
+
+</body>
+</html>

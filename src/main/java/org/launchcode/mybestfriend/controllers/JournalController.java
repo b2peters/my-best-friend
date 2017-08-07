@@ -47,4 +47,23 @@ public class JournalController extends AbstractController{
         return "redirect:/journal/"+pet_uid;
 
     }
+
+    @GetMapping(value ="/delete/{pet_uid}")
+    public String deleteJournal(Model model,  @PathVariable int pet_uid){
+        Pet pet = petDao.findOne(pet_uid);
+        List<Journal> journals = pet.getJournals();
+        model.addAttribute("journals", journals);
+        model.addAttribute("title", "Remove an Entry");
+
+        return "/journal/delete";
+    }
+
+    @PostMapping(value="/delete/{pet_uid}")
+    public String processDelete(@RequestParam int[] ids, @PathVariable int pet_uid){
+        for(int id: ids){
+            journalDao.delete(id);
+        }
+        return "redirect:";
+    }
+
 }
