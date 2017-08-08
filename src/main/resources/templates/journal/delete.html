@@ -7,7 +7,7 @@
 
 <p th:unless="${journals} and ${journals.size()}">Nothing to Delete</p>
 
-<form method="post" action="/journal/delete">
+<form method="post" >
     <div th:each="journal : ${journals}" class="checkbox">
         <input type="checkbox" name="ids" th:value="${journal.uid}" th:id="${journal.uid}"/>
         <label th:for="${journal.uid}" th:text="${journal.title}"></label>

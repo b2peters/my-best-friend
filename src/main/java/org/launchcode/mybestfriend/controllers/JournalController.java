@@ -15,18 +15,18 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value="journal")
-public class JournalController extends AbstractController{
+public class JournalController extends AbstractController {
 
-    @RequestMapping(value="/{pet_uid}")
-    public String viewJournal(Model model, @PathVariable int pet_uid){
+    @RequestMapping(value = "/{pet_uid}")
+    public String viewJournal(Model model, @PathVariable int pet_uid) {
         Pet pet = petDao.findOne(pet_uid);
         List<Journal> journals = pet.getJournals();
         model.addAttribute("journals", journals);
         return "journal/view";
     }
 
-    @RequestMapping(value="/add/{pet_uid}", method= RequestMethod.GET)
-    public String DisplayAddJournal(Model model, @PathVariable int pet_uid){
+    @RequestMapping(value = "/add/{pet_uid}", method = RequestMethod.GET)
+    public String DisplayAddJournal(Model model, @PathVariable int pet_uid) {
 
         model.addAttribute("title", "Add A New Pet");
         model.addAttribute("pet_uid", pet_uid);
@@ -34,9 +34,9 @@ public class JournalController extends AbstractController{
         return ("journal/add");
     }
 
-    @RequestMapping(value="/add/{pet_uid}", method=RequestMethod.POST)
-    public String processAddJournal(@ModelAttribute @Valid Journal newJournal, Errors errors, Model model, @PathVariable int pet_uid){
-        if (errors.hasErrors()){
+    @RequestMapping(value = "/add/{pet_uid}", method = RequestMethod.POST)
+    public String processAddJournal(@ModelAttribute @Valid Journal newJournal, Errors errors, Model model, @PathVariable int pet_uid) {
+        if (errors.hasErrors()) {
             return "/journal/add";
         }
         Pet pet = petDao.findOne(pet_uid);
@@ -44,12 +44,12 @@ public class JournalController extends AbstractController{
         journalDao.save(newJournal);
 
         model.addAttribute("pet", pet);
-        return "redirect:/journal/"+pet_uid;
+        return "redirect:/journal/" + pet_uid;
 
     }
 
-    @GetMapping(value ="/delete/{pet_uid}")
-    public String deleteJournal(Model model,  @PathVariable int pet_uid){
+    @GetMapping(value = "/delete/{pet_uid}")
+    public String deleteJournal(Model model, @PathVariable int pet_uid) {
         Pet pet = petDao.findOne(pet_uid);
         List<Journal> journals = pet.getJournals();
         model.addAttribute("journals", journals);
@@ -58,12 +58,11 @@ public class JournalController extends AbstractController{
         return "/journal/delete";
     }
 
-    @PostMapping(value="/delete/{pet_uid}")
-    public String processDelete(@RequestParam int[] ids, @PathVariable int pet_uid){
-        for(int id: ids){
+    @PostMapping(value = "/delete/{pet_uid}")
+    public String processDelete(@RequestParam int[] ids, @PathVariable int pet_uid) {
+        for (int id : ids) {
             journalDao.delete(id);
         }
-        return "redirect:";
+        return "redirect:/journal/{pet_uid}";
     }
-
 }
