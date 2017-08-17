@@ -24,7 +24,7 @@ public class UserController extends AbstractController{
     @RequestMapping(value="/sign-up", method = RequestMethod.GET)
     public String signUpForm(Model model){
         model.addAttribute(new SignUpForm());
-        model.addAttribute("title", "Welcome");
+        model.addAttribute("title", "Sign Up Here!!");
 
         return "user/sign-up";
     }
@@ -50,7 +50,7 @@ public class UserController extends AbstractController{
     @RequestMapping(value = "/login", method=RequestMethod.GET)
     public String login(Model model){
         model.addAttribute(new LogInForm());
-        model.addAttribute("title", "Log In");
+        model.addAttribute("title", "Welcome!!");
         return"user/login";
     }
     @RequestMapping(value="/login", method=RequestMethod.POST)

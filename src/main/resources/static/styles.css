@@ -1,9 +1,16 @@
-body{
+body {
     font-family: actor;
-    background-image: url("/images/background.jpg");
+    background: url(images/background.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
+}
+.login {
+    position: absolute;
+    right: 5px;
 }
 nav{
     margin-bottom: 30px;
