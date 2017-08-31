@@ -1,12 +1,15 @@
 body{
     font-family: actor;
-    background-image: url("/images/background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
 
 }
-nav{
-    margin-bottom: 30px;
+#nav{
+    margin-bottom: 60px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
 }
 
 .user-nav {

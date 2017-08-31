@@ -14,7 +14,13 @@
 <table class="table">
 
     <tr th:each="journal : ${journals}">
-        <td><a th:href="'/journal/upload/'+${journal.uid}">Add Photo</a></td>
+
+        <div th:switch="${journal.picFileName}">
+            <td th:case="null"><a th:href="'/journal/upload/'+${journal.uid}">Add Photo</a></td>
+            <td th:case="*" class="glyphicon glyphicon-picture"></td>
+        </div>
+
+
         <td th:text="${journal.title}" ></td>
         <td th:text="${journal.entry}"></td>
 

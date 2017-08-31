@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-import java.io.File;
-import java.sql.Blob;
 
 @Entity
 public class Journal extends AbstractEntity{
@@ -21,14 +19,14 @@ public class Journal extends AbstractEntity{
     private Pet owner;
 
 
-    private Blob picture;
+    private String picFileName;
 
-    public Blob getPicture() {
-        return picture;
+    public String getPicFileName() {
+        return picFileName;
     }
 
-    public void setPicture(Blob picture) {
-        this.picture = picture;
+    public void setPicFileName(String filename) {
+        this.picFileName = filename;
     }
 
     public String getTitle() {

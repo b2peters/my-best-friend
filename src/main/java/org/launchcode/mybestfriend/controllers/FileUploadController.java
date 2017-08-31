@@ -1,5 +1,7 @@
 package org.launchcode.mybestfriend.controllers;
 
+import org.launchcode.mybestfriend.models.Journal;
+import org.launchcode.mybestfriend.models.Pet;
 import org.launchcode.mybestfriend.models.upload.StorageFileNotFoundException;
 import org.launchcode.mybestfriend.models.upload.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,9 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value="upload")
-public class FileUploadController {
+public class FileUploadController extends AbstractController {
+
+
 
     private final StorageService storageService;
 
@@ -49,15 +53,21 @@ public class FileUploadController {
     }
 
     //Add new picture to journal entry and as (String originalFileName)
-    @PostMapping("/")
+    @PostMapping("/{journal_uid}")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+                                   RedirectAttributes redirectAttributes, @PathVariable int journal_uid) {
+
 
         storageService.store(file);
+        Journal journal = journalDao.findOne(journal_uid);
+        journal.setPicFileName(file.getOriginalFilename());
+        //store filename as picture object and attach to journal
+        Pet owner = journal.getOwner();
+        int pet_uid = owner.getUid();
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-        return "redirect:/";
+        return "redirect:/journal/"+pet_uid;
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)
