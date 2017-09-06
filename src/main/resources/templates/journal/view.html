@@ -17,7 +17,7 @@
 
         <div th:switch="${journal.picFileName}">
             <td th:case="null"><a th:href="'/journal/upload/'+${journal.uid}">Add Photo</a></td>
-            <td th:case="*" class="glyphicon glyphicon-picture"></td>
+            <td th:case="*"><a th:href="'/upload/files/'+${journal.picFileName}" class="glyphicon glyphicon-picture"></a></td>
         </div>
 
 

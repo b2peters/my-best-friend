@@ -43,7 +43,7 @@ public class FileUploadController extends AbstractController {
         return "uploadForm";
     }
 
-    @GetMapping("/files/{filename:.+}")
+    @GetMapping("/files/{filename}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
 
@@ -60,8 +60,10 @@ public class FileUploadController extends AbstractController {
 
         storageService.store(file);
         Journal journal = journalDao.findOne(journal_uid);
-        journal.setPicFileName(file.getOriginalFilename());
-        //store filename as picture object and attach to journal
+        String filename = file.getOriginalFilename();
+        journal.setPicFileName(filename);
+        journalDao.save(journal);
+        //store filename as string and attach to journal
         Pet owner = journal.getOwner();
         int pet_uid = owner.getUid();
         redirectAttributes.addFlashAttribute("message",
