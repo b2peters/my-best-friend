@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: head"></head>
-<body class="container" >
+<body class="login">
 <h1 th:text="${title}" >Default Title</h1>
-<form method="post" style="width:400px;" th:object="${logInForm}" class="login">
+<form method="post" style="width:100px;" th:object="${logInForm}" >
     <div class="form-group" >
         <label th:for="username">username</label>
         <input class="form-control" th:field="*{username}" />
@@ -17,10 +17,13 @@
     <div class="form-group">
     <input type="submit" value="Log In Now"/>
     </div>
-</form>
-<div class="container">
+    <div >
+
+    </div>
+
+<div >
     <a href="/sign-up" class="btn btn-default" >Join Now</a>
 </div>
-
+</form>
 </body>
 </html>
