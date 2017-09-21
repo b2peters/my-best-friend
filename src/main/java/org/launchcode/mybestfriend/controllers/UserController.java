@@ -50,7 +50,7 @@ public class UserController extends AbstractController{
     @RequestMapping(value = "/login", method=RequestMethod.GET)
     public String login(Model model){
         model.addAttribute(new LogInForm());
-        model.addAttribute("title", "Welcome!!");
+        model.addAttribute("title", "Welcome to My-Best-Friend!!");
         return"user/login";
     }
     @RequestMapping(value="/login", method=RequestMethod.POST)

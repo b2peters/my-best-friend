@@ -3,16 +3,18 @@ body {
 }
 .container {
     border:1px solid #000;
-    background-color:#FFF;
-    background-image: url('\my-best-friend\src\main\resources\static\images\background.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: LavenderBlush;
+    color: teal;
     height:400px;
     width:600px;
     margin-top: 100px;
+
   }
 .login {
-    position: absolute;
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     left: 5px;
 }
 nav{
@@ -24,14 +26,29 @@ nav{
 .button {
   font: bold 11px Arial;
   text-decoration: none;
-  background-color: #EEEEEE;
+  background-color: pink;
   color: #333333;
   padding: 2px 6px 2px 6px;
   border-top: 1px solid #CCCCCC;
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
+  width: 150px;
 }
 .form-control {
   height:5px;
+}
+.background{
+    background-image: url('background.jpg');
+}
+.btn-default{
+    background-color: LightGrey !important;
+    color: #0D9E69;
+    font-family: 'Barrio', cursive;
+    border-radius: 0px;
+    font-size: 15px !important;
+    background-image: none !important;
+}
+.table {
+
 }

@@ -12,15 +12,15 @@
 <div th:fragment="navigation">
 
     <nav th:if="${userId}">
-        <ul class="nav nav-pills pull-right" style="text-align:right" >
-            <li><a href="/">My Pets</a></li>
-            <li><a href="/pet/add">Add a Pet</a></li>
-            <li><a href="/logout" >Log Out</a></li>
+        <ul class="nav nav-pills pull-right " style="text-align:right" >
+            <li><a href="/" class="btn btn-default">My Pets</a></li>
+            <li><a href="/pet/add" class="btn btn-default">Add a Pet</a></li>
+            <li><a href="/logout" class="btn btn-default">Log Out</a></li>
         </ul>
     </nav>
 
-    <div class="button" >
-        <a href="/">Home</a>
+    <div  >
+        <a href="/" class="btn btn-default">Home</a>
     </div>
 
 </div>
